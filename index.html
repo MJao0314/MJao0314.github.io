@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>锐宸科技 | Ruichen Tech</title>
+    <title>锐宸科技 | Ruichen.Tech</title>
     <style>
         * {
             box-sizing: border-box;
@@ -33,7 +33,6 @@
             max-width: 960px;
             text-align: left;
             margin-bottom: 32px;
-            position: relative;
         }
 
         header h1 {
@@ -49,27 +48,6 @@
             color: #5a4f45;
         }
 
-        /* 新增：查看更多按钮 */
-        .view-more-btn {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-10%);
-            background: #d3b28a;
-            padding: 10px 22px;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #3a3028;
-            text-decoration: none;
-            box-shadow: 0 2px 6px rgba(120, 100, 80, 0.28);
-            transition: background 0.25s ease, transform 0.15s ease;
-        }
-
-        .view-more-btn:hover {
-            background: #e2c7a2;
-            transform: translateY(-12%);
-        }
-
         .content {
             width: 100%;
             max-width: 960px;
@@ -81,7 +59,9 @@
             color: #4a3f35;
         }
 
-        section + section { margin-top: 24px; }
+        section + section { 
+            margin-top: 24px; 
+        }
 
         h2 {
             font-size: 20px;
@@ -124,11 +104,39 @@
             color: #4a3f35;
         }
 
-        .contact-info p { margin-bottom: 4px; }
+        .contact-info p { 
+            margin-bottom: 4px; 
+        }
 
         .contact-highlight {
             font-weight: 600;
             color: #3a3028;
+        }
+
+        /* 底部“查看更多”按钮容器：
+           PC 端靠右，手机端居中 */
+        .bottom-actions {
+            width: 100%;
+            max-width: 960px;
+            margin-top: 24px;
+            text-align: right;
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            background: #d3b28a;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #3a3028;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(120, 100, 80, 0.28);
+            transition: background 0.25s ease, transform 0.15s ease;
+        }
+
+        .view-more-btn:hover {
+            background: #e2c7a2;
+            transform: translateY(-2px);
         }
 
         footer {
@@ -139,14 +147,53 @@
             color: #4a3f35;
         }
 
+        /* 手机端按钮居中 */
+        @media (max-width: 768px) {
+            .page {
+                padding: 40px 16px 40px;
+            }
+
+            header h1 { 
+                font-size: 28px; 
+            }
+
+            header p { 
+                font-size: 15px; 
+            }
+
+            .bottom-actions {
+                text-align: center;
+            }
+        }
+
         @media (min-width: 768px) {
-            .page { padding: 60px 24px 80px; }
-            header h1 { font-size: 40px; }
-            header p { font-size: 18px; }
-            .content { padding: 32px 32px 36px; }
-            h2 { font-size: 22px; }
-            p { font-size: 15px; }
-            .services li { font-size: 15px; }
+            .page { 
+                padding: 60px 24px 80px; 
+            }
+
+            header h1 { 
+                font-size: 40px; 
+            }
+
+            header p { 
+                font-size: 18px; 
+            }
+
+            .content { 
+                padding: 32px 32px 36px; 
+            }
+
+            h2 { 
+                font-size: 22px; 
+            }
+
+            p { 
+                font-size: 15px; 
+            }
+
+            .services li { 
+                font-size: 15px; 
+            }
         }
     </style>
 </head>
@@ -156,12 +203,9 @@
     <header>
         <h1>锐宸科技  Ruichen.Tech</h1>
         <p>专注于信息与情感咨询的服务型公司，基于系统化的方法与科技工具，为用户提供高质量的一对一咨询与个性化解决方案。</p>
-
-        <!-- 新增按钮：查看更多 -->
-        <a href="page2.html" class="view-more-btn">查看更多</a>
     </header>
 
-    <!-- 以下全部为你的原始内容，未改任何字 -->
+    <!-- 原始内容保持不动 -->
     <main class="content">
         <section>
             <h2>关于我们</h2>
@@ -191,6 +235,11 @@
             </div>
         </section>
     </main>
+
+    <!-- 新增：底部“查看更多”按钮容器 -->
+    <div class="bottom-actions">
+        <a href="page2.html" class="view-more-btn">查看更多</a>
+    </div>
 
     <footer>
         © 锐宸科技 Ruichen Tech. All rights reserved.
