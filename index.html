@@ -113,13 +113,13 @@
             color: #3a3028;
         }
 
-        /* 底部“查看更多”按钮容器：
-           PC 端靠右，手机端居中 */
+        /* ===== 底部按钮：按你的要求调整位置 ===== */
         .bottom-actions {
             width: 100%;
             max-width: 960px;
-            margin-top: 24px;
-            text-align: right;
+            margin-top: 10px;       /* 上移：靠近邮箱行 */
+            text-align: right;      /* PC 端靠右 */
+            padding-right: 12px;    /* 稍微左移一点，不贴边 */
         }
 
         .view-more-btn {
@@ -139,61 +139,21 @@
             transform: translateY(-2px);
         }
 
+        /* 手机版按钮居中 */
+        @media (max-width: 768px) {
+            .bottom-actions {
+                text-align: center;
+                padding-right: 0;
+                margin-top: 20px;
+            }
+        }
+
         footer {
             margin-top: 20px;
             font-size: 12px;
             opacity: 0.7;
             text-align: center;
             color: #4a3f35;
-        }
-
-        /* 手机端按钮居中 */
-        @media (max-width: 768px) {
-            .page {
-                padding: 40px 16px 40px;
-            }
-
-            header h1 { 
-                font-size: 28px; 
-            }
-
-            header p { 
-                font-size: 15px; 
-            }
-
-            .bottom-actions {
-                text-align: center;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .page { 
-                padding: 60px 24px 80px; 
-            }
-
-            header h1 { 
-                font-size: 40px; 
-            }
-
-            header p { 
-                font-size: 18px; 
-            }
-
-            .content { 
-                padding: 32px 32px 36px; 
-            }
-
-            h2 { 
-                font-size: 22px; 
-            }
-
-            p { 
-                font-size: 15px; 
-            }
-
-            .services li { 
-                font-size: 15px; 
-            }
         }
     </style>
 </head>
@@ -205,7 +165,6 @@
         <p>专注于信息与情感咨询的服务型公司，基于系统化的方法与科技工具，为用户提供高质量的一对一咨询与个性化解决方案。</p>
     </header>
 
-    <!-- 原始内容保持不动 -->
     <main class="content">
         <section>
             <h2>关于我们</h2>
@@ -236,7 +195,7 @@
         </section>
     </main>
 
-    <!-- 新增：底部“查看更多”按钮容器 -->
+    <!-- 你要的按钮：上移 & 左移 & 不遮挡 -->
     <div class="bottom-actions">
         <a href="page2.html" class="view-more-btn">查看更多</a>
     </div>
