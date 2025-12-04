@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>锐宸科技 | Ruichen.Tech</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -32,10 +28,7 @@
             margin-bottom: 32px;
         }
 
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
+        header h1 { font-size: 32px; margin-bottom: 8px; }
 
         .content {
             width: 100%;
@@ -46,14 +39,7 @@
             box-shadow: 0 12px 30px rgba(120, 100, 80, 0.28);
         }
 
-        section + section {
-            margin-top: 24px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
+        h2 { font-size: 20px; margin-bottom: 12px; }
 
         .services {
             list-style: none;
@@ -68,15 +54,17 @@
             border-radius: 8px;
         }
 
-        /* 三行间距一致化 */
+        /* 三行间距彻底统一 */
         .contact-info p {
-            margin-bottom: 14px; /* 统一三行间距 */
+            margin-bottom: 14px;   
         }
 
+        /* 地址 + 按钮同行 */
         .contact-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 0; /* 覆盖掉统一的 margin-bottom，避免按钮偏移 */
         }
 
         .view-more-btn {
@@ -84,20 +72,20 @@
             padding: 8px 18px;
             border-radius: 6px;
             font-size: 14px;
-            color: #3a3028;
             text-decoration: none;
             white-space: nowrap;
+            color: #3a3028;
         }
 
-        /* 手机端：按钮移动到地址下一行 */
+        /* 手机端按钮下移 */
         @media (max-width: 768px) {
             .contact-row {
                 flex-direction: column;
                 align-items: flex-start;
             }
             .view-more-btn {
+                margin-top: 8px;
                 align-self: center;
-                margin-top: 6px;
             }
         }
 
@@ -105,6 +93,7 @@
             margin-top: 24px;
             font-size: 12px;
             opacity: 0.7;
+            text-align: center;
         }
     </style>
 </head>
@@ -145,12 +134,13 @@
                 <p><strong>电话：</strong>1562-331-2393</p>
                 <p><strong>邮箱：</strong>ma@ruichen.tech</p>
 
-                <!-- 地址 + 按钮 同行 -->
+                <!-- 地址 + 按钮同行 -->
                 <p class="contact-row">
                     <span><strong>地址：</strong>武汉 · 西北湖 · 国金中心</span>
                     <a href="page2.html" class="view-more-btn">查看更多</a>
                 </p>
             </div>
+
         </section>
 
     </main>
