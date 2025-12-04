@@ -14,8 +14,6 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background: linear-gradient(135deg, #f7e9d7, #e3c9a8);
             color: #4a3f35;
         }
@@ -31,21 +29,12 @@
         header {
             width: 100%;
             max-width: 960px;
-            text-align: left;
             margin-bottom: 32px;
         }
 
         header h1 {
             font-size: 32px;
-            letter-spacing: 2px;
             margin-bottom: 8px;
-            color: #4a3f35;
-        }
-
-        header p {
-            font-size: 16px;
-            opacity: 0.9;
-            color: #5a4f45;
         }
 
         .content {
@@ -55,23 +44,9 @@
             border-radius: 12px;
             padding: 28px 20px 32px;
             box-shadow: 0 12px 30px rgba(120, 100, 80, 0.28);
-            backdrop-filter: blur(6px);
         }
 
-        section + section {
-            margin-top: 24px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #3f352e;
-        }
-
-        p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
+        h2 { margin-bottom: 10px; }
 
         .services {
             list-style: none;
@@ -83,68 +58,35 @@
 
         .services li {
             background: #e8d4b7;
-            border-radius: 8px;
             padding: 12px 14px;
-            text-align: left;
-            font-size: 14px;
-            transition: background 0.25s ease, transform 0.15s ease;
-            color: #4a3f35;
-        }
-
-        .services li:hover {
-            background: #f2e2c9;
-            transform: translateY(-1px);
-        }
-
-        .contact-info {
-            margin-top: 8px;
-            font-size: 14px;
+            border-radius: 8px;
         }
 
         .contact-info p {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
-        .contact-highlight {
-            font-weight: 600;
-            color: #3a3028;
-        }
-
-        /* === 按钮容器：在白色卡片内部，PC 右对齐，手机居中 === */
-        .more-wrapper {
-            margin-top: 20px;
-            text-align: right; /* PC 端右侧 */
+        /* ---- 核心：按钮与电话同行 ---- */
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .view-more-btn {
             background: #d3b28a;
-            padding: 10px 22px;
+            padding: 8px 20px;
             border-radius: 6px;
             font-size: 14px;
             color: #3a3028;
             text-decoration: none;
-            box-shadow: 0 2px 6px rgba(120, 100, 80, 0.28);
-            transition: background 0.25s ease, transform 0.15s ease;
             white-space: nowrap;
-        }
-
-        .view-more-btn:hover {
-            background: #e2c7a2;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .more-wrapper {
-                text-align: center;  /* 手机端居中 */
-                margin-top: 24px;
-            }
         }
 
         footer {
             margin-top: 24px;
             font-size: 12px;
             opacity: 0.7;
-            text-align: center;
         }
     </style>
 </head>
@@ -180,17 +122,17 @@
 
         <section>
             <h2>联系我们</h2>
-            <div class="contact-info">
-                <p><span class="contact-highlight">电话：</span>1562-331-2393</p>
-                <p><span class="contact-highlight">邮箱：</span>ma@ruichen.tech</p>
-                <p><span class="contact-highlight">地址：</span>武汉 · 西北湖 · 国金中心</p>
-            </div>
-        </section>
 
-        <!-- 按钮现在在白色卡片内部，和第二页一样 -->
-        <div class="more-wrapper">
-            <a href="page2.html" class="view-more-btn">查看更多</a>
-        </div>
+            <!-- 按钮与电话同行 -->
+            <div class="contact-row">
+                <span><strong>电话：</strong>1562-331-2393</span>
+                <a href="page2.html" class="view-more-btn">查看更多</a>
+            </div>
+
+            <p><strong>邮箱：</strong>ma@ruichen.tech</p>
+            <p><strong>地址：</strong>武汉 · 西北湖 · 国金中心</p>
+
+        </section>
 
     </main>
 
