@@ -3,112 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>锐宸科技 | Ruichen.Tech</title>
+    <title>锐宸科技 | 情感与信息咨询</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.6;
             background: linear-gradient(135deg, #f7e9d7, #e3c9a8);
             color: #4a3f35;
-            line-height: 1.6;
         }
 
         .page {
             min-height: 100vh;
-            padding: 40px 16px 60px;
+            padding: 16px 16px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        header {
+        /* 顶部导航条 */
+        .topbar {
             width: 100%;
-            max-width: 960px;
-            margin-bottom: 32px;
+            max-width: 1120px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 4px 4px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255, 250, 240, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #8b6b45;
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-text-main {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .brand-text-sub {
+            font-size: 12px;
+            opacity: 0.85;
         }
 
-        header h1 { font-size: 32px; margin-bottom: 8px; }
-
-        .content {
-            width: 100%;
-            max-width: 960px;
-            background: rgba(255, 250, 240, 0.75);
-            border-radius: 12px;
-            padding: 28px 20px 32px;
-            box-shadow: 0 12px 30px rgba(120, 100, 80, 0.28);
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #5a4f45;
+            opacity: 0.9;
+        }
+        .nav-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
-        h2 { font-size: 20px; margin-bottom: 12px; }
+        /* 第一屏 Hero 区域 */
+        .hero {
+            width: 100%;
+            max-width: 1120px;
+            margin-top: 16px;
+            margin-bottom: 20px;
+        }
+        .hero-card {
+            background: rgba(255, 250, 240, 0.9);
+            border-radius: 14px;
+            padding: 24px 20px 24px;
+            box-shadow: 0 10px 26px rgba(140, 110, 80, 0.25);
+        }
+        .hero-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .hero-subtitle {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 18px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn-primary,
+        .btn-outline {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: #d7b58a;
+            color: #3a3028;
+            border-color: #d7b58a;
+        }
+        .btn-primary:hover {
+            background: #e2c7a2;
+        }
+        .btn-outline {
+            background: transparent;
+            color: #6b5a4f;
+            border-color: rgba(107, 90, 79, 0.35);
+        }
+        .btn-outline:hover {
+            background: rgba(250, 245, 236, 0.9);
+        }
 
-        .services {
+        /* 主内容卡片 */
+        .content-card {
+            width: 100%;
+            max-width: 1120px;
+            background: rgba(255, 250, 240, 0.96);
+            border-radius: 14px;
+            padding: 24px 20px 26px;
+            box-shadow: 0 10px 26px rgba(140, 110, 80, 0.25);
+        }
+
+        section + section {
+            margin-top: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #3f352e;
+        }
+
+        p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        /* 关于我们 */
+        #about p {
+            text-align: justify;
+        }
+
+        /* 核心服务 */
+        .services-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
+            margin-top: 6px;
         }
-
-        .services li {
-            background: #e8d4b7;
-            padding: 12px 14px;
+        .services-list li {
+            background: #f1e2cd;
             border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+        .services-list strong {
+            display: inline-block;
+            margin-bottom: 4px;
         }
 
-        /* 三行间距彻底统一 */
+        /* 服务定价说明 */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 6px;
+        }
+        .pricing-item {
+            background: #f6ecdd;
+            border-radius: 8px;
+            padding: 12px 12px;
+            font-size: 14px;
+        }
+        .pricing-item-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .pricing-note {
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        /* 预约咨询流程 */
+        .steps-list {
+            list-style: none;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+        .steps-list li {
+            margin-bottom: 6px;
+        }
+
+        /* 联系我们区域 */
+        .contact-info {
+            margin-top: 6px;
+            font-size: 14px;
+        }
         .contact-info p {
-            margin-bottom: 14px;   
+            margin-bottom: 14px; /* 三行间距一致 */
         }
 
-        /* 地址 + 按钮同行 */
         .contact-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0; /* 覆盖掉统一的 margin-bottom，避免按钮偏移 */
+            gap: 12px;
+            margin-bottom: 0;
+        }
+        .contact-row span {
+            flex: 1;
         }
 
-        .view-more-btn {
-            background: #d3b28a;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-size: 14px;
+        .more-link {
+            font-size: 13px;
+            color: #8b6b45;
             text-decoration: none;
             white-space: nowrap;
-            color: #3a3028;
         }
-
-        /* 手机端按钮下移 */
-        @media (max-width: 768px) {
-            .contact-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .view-more-btn {
-                margin-top: 8px;
-                align-self: center;
-            }
+        .more-link:hover {
+            text-decoration: underline;
         }
 
         footer {
-            margin-top: 24px;
+            width: 100%;
+            max-width: 1120px;
+            margin-top: 18px;
             font-size: 12px;
             opacity: 0.7;
             text-align: center;
         }
+
+        /* 响应式 */
+        @media (min-width: 768px) {
+            .page {
+                padding: 24px 24px 48px;
+            }
+            .hero {
+                margin-top: 20px;
+                margin-bottom: 24px;
+            }
+            .hero-title {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 先隐藏顶部导航链接，保持手机端干净；后期可做菜单 */
+            }
+            .hero-card {
+                padding: 20px 16px 22px;
+            }
+            .content-card {
+                padding: 20px 16px 24px;
+            }
+            .contact-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .more-link {
+                align-self: center;
+            }
+        }
     </style>
 </head>
-
 <body>
 <div class="page">
 
-    <header>
-        <h1>锐宸科技  Ruichen.Tech</h1>
-        <p>专注于信息与情感咨询的服务型公司，基于系统化的方法与科技工具，为用户提供高质量的一对一咨询与个性化解决方案。</p>
+    <!-- 顶部导航：锚点跳转，单页结构 -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-logo">RC</div>
+            <div class="brand-text">
+                <span class="brand-text-main">锐宸科技</span>
+                <span class="brand-text-sub">情感与信息咨询</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#about">关于我们</a>
+            <a href="#services">核心服务</a>
+            <a href="#pricing">服务定价</a>
+            <a href="#booking">预约咨询</a>
+            <a href="#contact">联系我们</a>
+        </nav>
     </header>
 
-    <main class="content">
+    <!-- 第一屏：公司基础信息 + 两个按钮 -->
+    <section class="hero" id="top">
+        <div class="hero-card">
+            <h1 class="hero-title">锐宸科技 · Ruichen.Tech</h1>
+            <p class="hero-subtitle">
+                专注于信息与情感咨询的服务型公司，基于系统化的方法与科技工具，
+                为用户提供高质量的一对一咨询与个性化解决方案。
+            </p>
+            <div class="hero-actions">
+                <a href="#booking" class="btn-primary">预约咨询</a>
+                <a href="#services" class="btn-outline">了解我们的服务</a>
+            </div>
+        </div>
+    </section>
 
-        <section>
+    <!-- 主内容：关于 / 服务 / 定价 / 预约 / 联系 -->
+    <main class="content-card">
+
+        <!-- 关于我们（保留你原有文案） -->
+        <section id="about">
             <h2>关于我们</h2>
             <p>
                 锐宸科技致力于通过创新的科技咨询与工具服务，帮助个人与团队提升生活质量与工作效率。
@@ -117,30 +343,77 @@
             </p>
         </section>
 
-        <section>
+        <!-- 核心服务（保留原四条内容，做成卡片） -->
+        <section id="services">
             <h2>核心服务</h2>
-            <ul class="services">
-                <li><strong>男性情感咨询</strong><br>针对男性在亲密关系、分手挽回、长期关系经营中的困惑，提供一对一深度沟通与决策建议。</li>
-                <li><strong>情绪疏导与心理支持</strong><br>帮助在焦虑、压力大、失眠、无助感中的个体，通过结构化对话与陪伴，缓解情绪负担。</li>
-                <li><strong>信息与情境分析咨询</strong><br>针对复杂人际、多方关系或重要决策场景，对信息进行梳理与判断，给出更清晰的行动思路。</li>
-                <li><strong>女性情感与成长咨询（即将上线）</strong><br>面向女性个体的情感支持、关系梳理与个人成长规划服务。</li>
+            <ul class="services-list">
+                <li>
+                    <strong>男性情感咨询</strong><br>
+                    针对男性在亲密关系、分手挽回、长期关系经营中的困惑，提供一对一深度沟通与决策建议。
+                </li>
+                <li>
+                    <strong>情绪疏导与心理支持</strong><br>
+                    帮助在焦虑、压力大、失眠、无助感中的个体，通过结构化对话与陪伴，缓解情绪负担。
+                </li>
+                <li>
+                    <strong>信息与情境分析咨询</strong><br>
+                    针对复杂人际、多方关系或重要决策场景，对信息进行梳理与判断，给出更清晰的行动思路。
+                </li>
+                <li>
+                    <strong>女性情感与成长咨询（即将上线）</strong><br>
+                    面向女性个体的情感支持、关系梳理与个人成长规划服务。
+                </li>
             </ul>
         </section>
 
-        <section>
-            <h2>联系我们</h2>
+        <!-- 服务定价说明：后期你可以直接改这块内容 -->
+        <section id="pricing">
+            <h2>服务定价说明</h2>
+            <div class="pricing-grid">
+                <div class="pricing-item">
+                    <div class="pricing-item-title">一对一情感咨询</div>
+                    <p>以单次时长与服务深度为基础计费，适合阶段性困惑和单一议题的梳理与决策。</p>
+                    <p class="pricing-note">具体费用会在沟通预约时，根据你的议题与时长需求进行确认。</p>
+                </div>
+                <div class="pricing-item">
+                    <div class="pricing-item-title">周期陪伴与跟进</div>
+                    <p>适合正在经历情感波动、关系调整或生活阶段性压力的人群，提供持续跟进与复盘。</p>
+                    <p class="pricing-note">通常以周或月为单位，包含固定咨询时长与临时沟通通道。</p>
+                </div>
+                <div class="pricing-item">
+                    <div class="pricing-item-title">定制化信息与情境分析</div>
+                    <p>针对复杂多方关系或重大决策（如复合、分手、婚姻抉择等），进行结构化分析与方案设计。</p>
+                    <p class="pricing-note">根据议题复杂度与准备工作量评估，给出单次或阶段性报价。</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- 预约咨询流程：以后你可以把“入口”改成企微/表单等 -->
+        <section id="booking">
+            <h2>预约咨询流程</h2>
+            <ul class="steps-list">
+                <li>1. 通过电话或邮箱添加联系方式，简单描述你的当前状况与期望方向。</li>
+                <li>2. 顾问根据你的情况，确认是否适合开展咨询，并与你约定首次沟通时间与形式。</li>
+                <li>3. 首次咨询以梳理现状、厘清核心问题和目标为主，必要时一起制定后续陪伴/跟进方案。</li>
+                <li>4. 你可以根据实际感受，自主决定是单次咨询，还是进入周期性服务。</li>
+            </ul>
+            <p class="pricing-note">
+                提醒：如果你当下情绪非常不稳定，或有明显的身体/安全风险，请优先联系身边可信任的人，
+                或所在地正规医疗与公共服务机构。本服务不替代临床诊疗。
+            </p>
+        </section>
+
+        <!-- 联系我们：保留原有信息，按钮跳回预约板块 -->
+        <section id="contact">
+            <h2>联系我们</h2>
             <div class="contact-info">
                 <p><strong>电话：</strong>1562-331-2393</p>
                 <p><strong>邮箱：</strong>ma@ruichen.tech</p>
-
-                <!-- 地址 + 按钮同行 -->
                 <p class="contact-row">
                     <span><strong>地址：</strong>武汉 · 西北湖 · 国金中心</span>
-                    <a href="page2.html" class="view-more-btn">查看更多</a>
+                    <a href="#booking" class="more-link">了解预约细节</a>
                 </p>
             </div>
-
         </section>
 
     </main>
@@ -148,7 +421,6 @@
     <footer>
         © 锐宸科技 Ruichen Tech. All rights reserved.
     </footer>
-
 </div>
 </body>
 </html>
