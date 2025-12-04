@@ -83,6 +83,7 @@
             opacity: 0.72;
         }
 
+        /* 桌面导航 */
         .nav-links {
             display: flex;
             gap: 32px;
@@ -117,16 +118,60 @@
             width: 100%;
         }
 
-        /* Hero 第一屏 */
+        /* 手机端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid rgba(107, 90, 79, 0.35);
+            background: rgba(248, 244, 238, 0.98);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 16px;
+            height: 2px;
+            background: #4a3f35;
+            position: relative;
+        }
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 2px;
+            background: #4a3f35;
+        }
+        .menu-toggle span::before {
+            top: -5px;
+        }
+        .menu-toggle span::after {
+            top: 5px;
+        }
+
+        /* 顶部栏在移动端展开菜单时 */
+        .topbar.menu-open {
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .topbar.menu-open .nav-links {
+            display: flex;
+        }
+
+        /* Hero 第一屏：扩大白色区域留白 */
         .hero {
             margin-top: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .hero-card {
             background: #fdfaf7;
             border-radius: 24px;
-            padding: 48px 48px 40px;
+            padding: 56px 52px 48px;
             box-shadow: 0 28px 70px rgba(0, 0, 0, 0.07);
         }
 
@@ -139,14 +184,14 @@
             background: rgba(200, 155, 99, 0.08);
             font-size: 12px;
             color: #8b6b45;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .hero-title {
             font-size: 32px;
             font-weight: 600;
             letter-spacing: 0.04em;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             color: #2c2520;
         }
 
@@ -166,13 +211,14 @@
         .section-block {
             background: #fdfaf7;
             border-radius: 24px;
-            padding: 32px 32px 40px;
+            padding: 30px 30px 36px;
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.04);
         }
 
-        /* 让 about 更“整屏”，核心服务自然落在二屏 */
+        /* 关于我们：减一点留白，让它高度稍低，方便 Hero 更突出 */
         #about.section-block {
-            min-height: 52vh;
+            min-height: 40vh;
+            padding: 26px 26px 30px;
         }
 
         .section-header {
@@ -193,7 +239,7 @@
 
         /* 锚点高亮：明显 1 秒效果 */
         .section-block[id] {
-            scroll-margin-top: 120px; /* 避免被导航挡住顶部 */
+            scroll-margin-top: 120px; /* 避免被导航遮住顶部 */
         }
 
         .section-block:target {
@@ -312,7 +358,7 @@
         /* 响应式 */
         @media (max-width: 900px) {
             .hero-card {
-                padding: 32px 22px 28px;
+                padding: 36px 22px 30px;
             }
             .section-block {
                 padding: 24px 18px 30px;
@@ -320,6 +366,7 @@
             }
             #about.section-block {
                 min-height: auto;
+                padding: 22px 18px 26px;
             }
         }
 
@@ -331,8 +378,25 @@
                 padding-inline: 16px;
                 border-radius: 0 0 14px 14px;
             }
+            /* 手机端：显示汉堡按钮，导航变为下拉 */
+            .menu-toggle {
+                display: flex;
+            }
             .nav-links {
-                display: none; /* 手机端先隐藏导航文字，后续如需做汉堡菜单再加 */
+                display: none;
+                position: absolute;
+                right: 16px;
+                top: 100%;
+                margin-top: 10px;
+                flex-direction: column;
+                gap: 12px;
+                background: rgba(248, 244, 238, 0.98);
+                padding: 10px 14px;
+                border-radius: 14px;
+                box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+            }
+            .topbar.menu-open .nav-links {
+                display: flex;
             }
             .hero-title {
                 font-size: 26px;
@@ -349,18 +413,23 @@
             <div class="brand-text-sub">情感与信息咨询</div>
         </div>
     </div>
+
     <nav class="nav-links">
         <a href="#about">关于我们</a>
         <a href="#services">核心服务</a>
         <a href="#booking">预约咨询</a>
         <a href="#contact">联系我们</a>
     </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="打开导航">
+        <span></span>
+    </button>
 </div>
 
 <div class="page">
     <div class="shell">
 
-        <!-- Hero 第一屏：只保留文案，不再有按钮 -->
+        <!-- Hero 第一屏：放大留白 -->
         <section class="hero">
             <div class="hero-card">
                 <div class="hero-tag">
@@ -415,7 +484,7 @@
                     <div class="service-item">
                         <div class="service-title">信息与情境分析咨询</div>
                         <div class="service-body">
-                            针对复杂人际、多方关系或重要决策场景，对信息进行梳理与判断，给出更清晰的行动思路。
+                            针对复杂人际、多方关系或重大决策场景，对信息进行梳理与判断，给出更清晰的行动思路。
                         </div>
                     </div>
                     <div class="service-item">
@@ -474,16 +543,19 @@
 </div>
 
 <script>
-    // 顶部导航：下滑隐藏，上滑显示；鼠标到顶部也显示
+    // 顶部导航：下滑隐藏，上滑显示；鼠标到顶部也显示；手机端菜单开关
     (function() {
         var topbar = document.getElementById('topbar');
         var lastScrollY = window.scrollY;
+        var menuToggle = document.getElementById('menuToggle');
+        var navLinks = topbar.querySelector('.nav-links');
 
         function handleScroll() {
             var currentY = window.scrollY;
             if (currentY > lastScrollY && currentY > 120) {
                 // 向下滚且已离开顶部：隐藏导航
                 topbar.classList.add('nav-hidden');
+                topbar.classList.remove('menu-open'); // 同时收起菜单
             } else {
                 // 向上滚或接近顶部：显示导航
                 topbar.classList.remove('nav-hidden');
@@ -495,6 +567,27 @@
             if (e.clientY < 70) {
                 topbar.classList.remove('nav-hidden');
             }
+        }
+
+        // 手机端汉堡菜单点击
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                if (topbar.classList.contains('menu-open')) {
+                    topbar.classList.remove('menu-open');
+                } else {
+                    topbar.classList.remove('nav-hidden'); // 展开时确保可见
+                    topbar.classList.add('menu-open');
+                }
+            });
+        }
+
+        // 点击导航项时，自动收起手机菜单
+        if (navLinks) {
+            navLinks.addEventListener('click', function(e) {
+                if (e.target.tagName.toLowerCase() === 'a') {
+                    topbar.classList.remove('menu-open');
+                }
+            });
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true });
