@@ -56,11 +56,10 @@
             padding: 28px 20px 32px;
             box-shadow: 0 12px 30px rgba(120, 100, 80, 0.28);
             backdrop-filter: blur(6px);
-            color: #4a3f35;
         }
 
-        section + section { 
-            margin-top: 24px; 
+        section + section {
+            margin-top: 24px;
         }
 
         h2 {
@@ -72,7 +71,6 @@
         p {
             font-size: 14px;
             opacity: 0.9;
-            color: #4a3f35;
         }
 
         .services {
@@ -90,7 +88,6 @@
             text-align: left;
             font-size: 14px;
             transition: background 0.25s ease, transform 0.15s ease;
-            color: #4a3f35;
         }
 
         .services li:hover {
@@ -101,29 +98,22 @@
         .contact-info {
             margin-top: 8px;
             font-size: 14px;
-            color: #4a3f35;
         }
 
-        .contact-info p { 
-            margin-bottom: 4px; 
+        .contact-info p {
+            margin-bottom: 6px;
         }
 
-        .contact-highlight {
-            font-weight: 600;
-            color: #3a3028;
-        }
+        /* ==================== 关键：按钮放在最下面 ==================== */
 
-        /* ===== 底部按钮：按你的要求调整位置 ===== */
-        .bottom-actions {
+        .more-wrapper {
             width: 100%;
             max-width: 960px;
-            margin-top: 10px;       /* 上移：靠近邮箱行 */
-            text-align: right;      /* PC 端靠右 */
-            padding-right: 12px;    /* 稍微左移一点，不贴边 */
+            margin-top: 16px;
+            text-align: right; /* PC端右侧 */
         }
 
         .view-more-btn {
-            display: inline-block;
             background: #d3b28a;
             padding: 10px 22px;
             border-radius: 6px;
@@ -132,6 +122,7 @@
             text-decoration: none;
             box-shadow: 0 2px 6px rgba(120, 100, 80, 0.28);
             transition: background 0.25s ease, transform 0.15s ease;
+            white-space: nowrap;
         }
 
         .view-more-btn:hover {
@@ -139,24 +130,23 @@
             transform: translateY(-2px);
         }
 
-        /* 手机版按钮居中 */
+        /* 手机端按钮移到最下面居中 */
         @media (max-width: 768px) {
-            .bottom-actions {
+            .more-wrapper {
                 text-align: center;
-                padding-right: 0;
-                margin-top: 20px;
+                margin-top: 26px;
             }
         }
 
         footer {
-            margin-top: 20px;
+            margin-top: 24px;
             font-size: 12px;
             opacity: 0.7;
             text-align: center;
-            color: #4a3f35;
         }
     </style>
 </head>
+
 <body>
 <div class="page">
 
@@ -166,6 +156,7 @@
     </header>
 
     <main class="content">
+
         <section>
             <h2>关于我们</h2>
             <p>
@@ -188,21 +179,23 @@
         <section>
             <h2>联系我们</h2>
             <div class="contact-info">
-                <p><span class="contact-highlight">电话：</span>1562-331-2393</p>
-                <p><span class="contact-highlight">邮箱：</span>ma@ruichen.tech</p>
-                <p><span class="contact-highlight">地址：</span>武汉 · 西北湖 · 国金中心</p>
+                <p><strong>电话：</strong>1562-331-2393</p>
+                <p><strong>邮箱：</strong>ma@ruichen.tech</p>
+                <p><strong>地址：</strong>武汉 · 西北湖 · 国金中心</p>
             </div>
         </section>
+
     </main>
 
-    <!-- 你要的按钮：上移 & 左移 & 不遮挡 -->
-    <div class="bottom-actions">
+    <!-- 按你的要求：按钮永远在最下面 -->
+    <div class="more-wrapper">
         <a href="page2.html" class="view-more-btn">查看更多</a>
     </div>
 
     <footer>
         © 锐宸科技 Ruichen Tech. All rights reserved.
     </footer>
+
 </div>
 </body>
 </html>
