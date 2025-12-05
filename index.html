@@ -162,7 +162,7 @@
             display: flex;
         }
 
-        /* Hero 第一屏：扩大白色区域留白 */
+        /* Hero 第一屏 */
         .hero {
             margin-top: 16px;
             margin-bottom: 28px;
@@ -201,7 +201,7 @@
             color: #605349;
         }
 
-        /* 主内容区整体 */
+        /* 内容块整体 */
         .sections {
             display: flex;
             flex-direction: column;
@@ -215,114 +215,31 @@
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.04);
         }
 
-        /* 关于我们：减一点留白，让它高度稍低，方便 Hero 更突出 */
-        #about.section-block {
-            min-height: 40vh;
-            padding: 26px 26px 30px;
-        }
-
-        .section-header {
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: #312822;
-            margin-bottom: 6px;
-        }
-
-        .section-subtitle {
-            font-size: 13px;
-            color: #8a7a6d;
-        }
-
-        /* 锚点高亮：明显 1 秒效果 */
-        .section-block[id] {
-            scroll-margin-top: 120px; /* 避免被导航遮住顶部 */
-        }
-
-        .section-block:target {
-            animation: sectionHighlight 1.1s ease-out;
-        }
+        /* 锚点高亮 */
+        .section-block[id] { scroll-margin-top: 120px; }
+        .section-block:target { animation: sectionHighlight 1.1s ease-out; }
 
         @keyframes sectionHighlight {
-            0% {
-                box-shadow: 0 0 0 0 rgba(200, 155, 99, 0.0);
-                background-color: #fdfaf7;
-            }
-            20% {
-                box-shadow: 0 0 0 6px rgba(200, 155, 99, 0.45);
-                background-color: #f8efe2;
-            }
-            60% {
-                box-shadow: 0 0 0 2px rgba(200, 155, 99, 0.25);
-                background-color: #fbf5ec;
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(200, 155, 99, 0.0);
-                background-color: #fdfaf7;
-            }
+            0% { box-shadow: 0 0 0 0 rgba(200,155,99,0); background:#fdfaf7; }
+            20% { box-shadow: 0 0 0 6px rgba(200,155,99,0.45); background:#f8efe2; }
+            60% { box-shadow: 0 0 0 2px rgba(200,155,99,0.25); background:#fbf5ec; }
+            100% { box-shadow: 0 0 0 0 rgba(200,155,99,0); background:#fdfaf7; }
         }
 
-        /* 关于我们正文 */
-        .about-text {
-            font-size: 15px;
-            color: #51453c;
-            max-width: 860px;
-        }
-
-        /* 核心服务卡片 */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-            margin-top: 4px;
-        }
-
-        .service-item {
-            background: #f6efe5;
-            border-radius: 18px;
-            padding: 16px 16px 18px;
-            font-size: 14px;
-        }
-
-        .service-title {
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #3a3028;
-        }
-
-        .service-body {
-            color: #5a4c42;
-        }
-
-        /* 预约区 */
-        .steps {
-            margin-top: 4px;
-            font-size: 14px;
-            color: #51453c;
-        }
-
-        .steps li {
-            margin-bottom: 8px;
-        }
-
-        .steps-note {
-            font-size: 12px;
-            color: #8a7a6d;
-            margin-top: 10px;
-            max-width: 720px;
-        }
-
-        /* 联系我们区 */
+        /* 联系我们文字样式 */
         .contact-lines {
             font-size: 15px;
             color: #4a3f35;
         }
+        .contact-lines p { margin-bottom: 10px; }
 
-        .contact-lines p {
-            margin-bottom: 10px;
+        /* 电话和邮箱统一颜色（新增） */
+        .contact-lines a {
+            color: #4a3f35;
+            text-decoration: none;
+        }
+        .contact-lines a:hover {
+            text-decoration: underline;
         }
 
         .contact-row {
@@ -333,21 +250,6 @@
             margin-top: 6px;
         }
 
-        .contact-row span {
-            flex: 1;
-        }
-
-        .contact-link {
-            font-size: 13px;
-            color: #8b6b45;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-
         footer {
             margin-top: 28px;
             font-size: 12px;
@@ -355,53 +257,6 @@
             text-align: center;
         }
 
-        /* 响应式 */
-        @media (max-width: 900px) {
-            .hero-card {
-                padding: 36px 22px 30px;
-            }
-            .section-block {
-                padding: 24px 18px 30px;
-                min-height: auto;
-            }
-            #about.section-block {
-                min-height: auto;
-                padding: 22px 18px 26px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .page {
-                padding: 76px 14px 40px;
-            }
-            .topbar {
-                padding-inline: 16px;
-                border-radius: 0 0 14px 14px;
-            }
-            /* 手机端：显示汉堡按钮，导航变为下拉 */
-            .menu-toggle {
-                display: flex;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                right: 16px;
-                top: 100%;
-                margin-top: 10px;
-                flex-direction: column;
-                gap: 12px;
-                background: rgba(248, 244, 238, 0.98);
-                padding: 10px 14px;
-                border-radius: 14px;
-                box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
-            }
-            .topbar.menu-open .nav-links {
-                display: flex;
-            }
-            .hero-title {
-                font-size: 26px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -429,12 +284,10 @@
 <div class="page">
     <div class="shell">
 
-        <!-- Hero 第一屏：放大留白 -->
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-card">
-                <div class="hero-tag">
-                    <span>一对一情感与信息咨询</span>
-                </div>
+                <div class="hero-tag"><span>一对一情感与信息咨询</span></div>
                 <h1 class="hero-title">在复杂情绪和关系里，帮你看清一点路。</h1>
                 <p class="hero-subtitle">
                     面向处于情感压力、关系困惑和重要决策阶段的个体，提供安静、克制、以结果为导向的一对一咨询服务。
@@ -443,7 +296,6 @@
             </div>
         </section>
 
-        <!-- 四个主模块 -->
         <div class="sections">
 
             <!-- 关于我们 -->
@@ -489,7 +341,7 @@
                     <div class="service-item">
                         <div class="service-title">女性情感与成长咨询（即将上线）</div>
                         <div class="service-body">
-                            面向女性个体的情感支持、关系梳理与个人成长规划服务。
+                            面向女性整体的情感支持、关系梳理与个人成长规划服务。
                         </div>
                     </div>
                 </div>
@@ -522,8 +374,20 @@
                 </div>
 
                 <div class="contact-lines">
-                    <p><strong>电话：</strong>1562-331-2393/1368-721-2385</p>
-                    <p><strong>邮箱：</strong>ma@ruichen.tech/yuan@ruichen.tech</p>
+                    <p>
+                        <strong>电话：</strong>
+                        <a href="tel:15623312393">1562-331-2393</a>
+                        /
+                        <a href="tel:13687212385">1368-721-2385</a>
+                    </p>
+
+                    <p>
+                        <strong>邮箱：</strong>
+                        <a href="mailto:ma@ruichen.tech">ma@ruichen.tech</a>
+                        /
+                        <a href="mailto:yuan@ruichen.tech">yuan@ruichen.tech</a>
+                    </p>
+
                     <div class="contact-row">
                         <span><strong>地址：</strong>武汉 · 西北湖 · 国际金融中心</span>
                         <a href="#booking" class="contact-link">了解预约细节</a>
@@ -541,7 +405,7 @@
 </div>
 
 <script>
-    // 顶部导航：下滑隐藏，上滑显示；鼠标到顶部也显示；手机端菜单开关
+    // 顶部导航控制
     (function() {
         var topbar = document.getElementById('topbar');
         var lastScrollY = window.scrollY;
@@ -551,11 +415,9 @@
         function handleScroll() {
             var currentY = window.scrollY;
             if (currentY > lastScrollY && currentY > 120) {
-                // 向下滚且已离开顶部：隐藏导航
                 topbar.classList.add('nav-hidden');
-                topbar.classList.remove('menu-open'); // 同时收起菜单
+                topbar.classList.remove('menu-open');
             } else {
-                // 向上滚或接近顶部：显示导航
                 topbar.classList.remove('nav-hidden');
             }
             lastScrollY = currentY;
@@ -567,19 +429,13 @@
             }
         }
 
-        // 手机端汉堡菜单点击
         if (menuToggle) {
             menuToggle.addEventListener('click', function() {
-                if (topbar.classList.contains('menu-open')) {
-                    topbar.classList.remove('menu-open');
-                } else {
-                    topbar.classList.remove('nav-hidden'); // 展开时确保可见
-                    topbar.classList.add('menu-open');
-                }
+                topbar.classList.toggle('menu-open');
+                topbar.classList.remove('nav-hidden');
             });
         }
 
-        // 点击导航项时，自动收起手机菜单
         if (navLinks) {
             navLinks.addEventListener('click', function(e) {
                 if (e.target.tagName.toLowerCase() === 'a') {
