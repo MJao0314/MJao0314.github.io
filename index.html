@@ -302,10 +302,13 @@
             margin-top: 4px;
             font-size: 14px;
             color: #51453c;
+            list-style: none;      /* 去掉整体列表的小圆点 */
+            padding-left: 0;       /* 去掉左缩进 */
         }
 
         .steps li {
             margin-bottom: 8px;
+            list-style: none;      /* 保险：每个 li 不显示默认样式 */
         }
 
         .steps-note {
@@ -325,7 +328,7 @@
             margin-bottom: 10px;
         }
 
-        /* 统一联系电话和邮箱链接颜色（新增） */
+        /* 统一联系电话和邮箱链接颜色 */
         .contact-lines a {
             color: #4a3f35;
             text-decoration: none;
